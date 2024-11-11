@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Rethink Sans", sans-serif;
+}
+
+body{
+  background-color: rgb(48, 47, 47);
+  position: relative;
+  overflow-x: hidden
+  
+  
+}
+
+#app{
+  width: 100vw;
+  background-color: rgb(48, 47, 47);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+}
+
+#chat_container{
+  flex: 1;
+  width: 100%;  
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+ 
+}
+
+form{
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  max-width:65%;
+  margin:  0 auto;
+  padding: 2px;
+  background-color: #40413f;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  border-radius: 20px;
+  
+}
+
+input{
+  resize: none;
+  width: 100%;
+  color: #fff;
+  font-size: 18px;
+  padding: 5px;
+  background-color: #40413f;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+button{
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+  color: #807f7f;
+}
+
+form i{
+  font-size: 20px;
+  padding: 10px;
+}
+
+form i:hover{
+  color: #807f7f8a;
+}
+
+
+.tittle{
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.tiitle i , h2{
+  padding-left  : 10px;
+}
+
+.user-message{
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  background-color: #f1f1f11c;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 60%;
+  text-align: right;
+  align-self: flex-end;
+  color: #fff;
+  position: relative;
+  left: -18%
+  
+}
+
+.bot-message {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  background-color: #4c4e4d;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 60%;
+  text-align: left;
+  align-self: flex-start;
+  color: #fff;
+  position: relative;
+  left: 18% 
+}
+
+.loading-message {
+  color: #fff; 
+  text-align: left;  
+  position: relative;
+  left: 20%;
+  font-size: 20px;  
+  margin: 5px 0;  
+}
+
+
