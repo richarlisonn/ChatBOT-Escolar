@@ -11,6 +11,7 @@ body{
   background-color: rgb(48, 47, 47);
   position: relative;
   overflow-x: hidden;
+  overflow-y: hidden
 }
 
 #app {
