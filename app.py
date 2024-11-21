@@ -11,6 +11,8 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
 
+# Configurar chave secreta para o Flask usar sessões
+app.secret_key = 'sua_chave_secreta_aqui'  # Troque por uma chave secreta real
 
 # Função para carregar o FAQ de um arquivo JSON
 def carregar_faq(arquivo="faq.json"):
