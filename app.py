@@ -1,4 +1,4 @@
-import openai
+import openai 
 from flask import Flask, render_template, request, jsonify, session
 from dotenv import load_dotenv
 import os
@@ -11,8 +11,6 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
 
-# Configurar chave secreta para o Flask usar sessões
-app.secret_key = 'sua_chave_secreta_aqui'  # Troque por uma chave secreta real
 
 # Função para carregar o FAQ de um arquivo JSON
 def carregar_faq(arquivo="faq.json"):
@@ -30,11 +28,15 @@ respostas_prontas = carregar_faq()
 
 # Função para encontrar a resposta mais próxima no FAQ
 def get_closest_faq_answer(pergunta, threshold=0.6):
+    """
+    Encontra a resposta mais próxima com base na similaridade da pergunta.
+    """
     pergunta = pergunta.lower().strip()
     melhor_match = None
     maior_similaridade = 0
 
     for chave in respostas_prontas.keys():
+        # Calcula a similaridade entre a pergunta e cada chave do FAQ
         similaridade = SequenceMatcher(None, pergunta, chave.lower()).ratio()
         if similaridade > maior_similaridade and similaridade >= threshold:
             melhor_match = chave
@@ -47,21 +49,24 @@ def get_closest_faq_answer(pergunta, threshold=0.6):
 # Função para enviar a mensagem para a API da OpenAI
 def enviar_mensagem(mensagem, lista_mensagens):
     try:
-        # Adiciona a mensagem do usuário ao histórico
-        lista_mensagens.append({"role": "user", "content": mensagem})
+        # Configuração de prompt inicial do sistema
+        mensagens = [{"role": "system", "content": """
+        Você é um chatbot especializado em responder perguntas sobre a escola E.E Carlos Gomes.
+        Responda de forma objetiva e com base nos dados fornecidos no FAQ.
+        """}]
         
-        # Envia a sequência de mensagens para o modelo
+        # Adiciona a pergunta do usuário ao contexto
+        mensagens.append({"role": "user", "content": mensagem})
+
+        # Envia as mensagens para o modelo
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # ou o modelo que você está usando
-            messages=lista_mensagens
+            model="gpt-3.5-turbo",
+            messages=mensagens
         )
         
-        # Obtenha a resposta do modelo
+        # Obtém a resposta do modelo
         resposta = response["choices"][0]["message"]["content"]
-
-        # Adiciona a resposta do modelo ao histórico
         lista_mensagens.append({"role": "assistant", "content": resposta})
-        
         return resposta
     except Exception as e:
         print(f"Erro ao enviar mensagem: {e}")
@@ -82,13 +87,10 @@ def homepage():
         # Verifica no FAQ primeiro
         resposta_faq = get_closest_faq_answer(text)
         if resposta_faq:
-            # Caso encontre no FAQ, retorna essa resposta
             return jsonify({"response": resposta_faq})
 
-        # Caso contrário, usa o modelo do OpenAI para gerar uma resposta com base no histórico
+        # Caso contrário, usa o modelo do OpenAI para gerar uma resposta
         resposta = enviar_mensagem(text, session['historico'])
-        
-        # Retorna a resposta do modelo
         return jsonify({"response": resposta})
 
     return render_template("index.html")

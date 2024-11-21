@@ -9,20 +9,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header class="tittle">
-        <h2>Assistente Virtual - Carlos Gomes</h2>
-    </header>
-    <main id="app">
-        <div id="chat_container"></div>
-        <form id="chat_form" method="post">
-            <input id="mensagem" name="prompt" placeholder="Digite algo..." required />
-            <button type="submit"><i class="fa-regular fa-paper-plane"></i></button>
-        </form>
-    </main>
-
-    <div id="creditos">
-        <p>Créditos: Desenvolvido pelo 2 DS </p>
+    <div class="container">
+        <header class="tittle">
+            <a href="http://127.0.0.1:5000/"><h2>Assistente Virtual - Carlos Gomes</h2></a>
+        </header>
+        <main id="app">
+            <div id="chat_container"></div>
+            <form id="chat_form" method="post">
+                <input id="mensagem" name="prompt" placeholder="Digite algo..." required />
+                <button type="submit"><i class="fa-regular fa-paper-plane"></i></button>
+            </form>
+        </main>
+        <div id="creditos">
+            <p>Créditos: Desenvolvido pelo 2 DS </p>
+        </div>
     </div>
+
     
     <script type="module" src="static/main.js"></script>
 </body>

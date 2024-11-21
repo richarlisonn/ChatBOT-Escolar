@@ -1,9 +1,11 @@
 {
   "Olá": "Olá, como posso ajudar te ajudar?",
+  "qual numero de vagas" : "Atualmente temos 100 vagas",
   "Qual nome da da escola": "E.E Carlos Gomes",
   "tipo da escola": "EE",
   "Diretoria de Ensino": "Leste 2",
-  "endereço completo da escola": "ANTONIO BERNARDO SILVESTRE, 203 AVENIDA. VILA SAO SILVESTRE ZONA LESTE. 08011-390 São Paulo - SP.",
+  "qual endereço da escola?": "ANTONIO BERNARDO SILVESTRE, 203 AVENIDA. VILA SAO SILVESTRE ZONA LESTE. 08011-390 São Paulo - SP.",
+  "qual localidade da escola?": "ANTONIO BERNARDO SILVESTRE, 203 AVENIDA. VILA SAO SILVESTRE ZONA LESTE. 08011-390 São Paulo - SP.",
   "telefone atual da escola": "(11) 2297-1079",
   "rua da escola": "ANTONIO BERNARDO SILVESTRE, 203 AVENIDA. VILA SAO SILVESTRE ZONA LESTE.",
   "estado é a escola": "São Paulo - SP.",
